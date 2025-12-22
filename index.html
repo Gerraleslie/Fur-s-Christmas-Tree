@@ -119,7 +119,7 @@
     <audio id="bgm" src="music.mp3" loop></audio>
     <div id="loader">
         <div class="spinner"></div>
-        <div class="loader-text">Loading Holiday Magic</div>
+        <div class="loader-text">Loading Our Memory</div>
     </div>
 
     <div id="canvas-container"></div>
@@ -610,6 +610,14 @@
                 renderer.setSize(window.innerWidth, window.innerHeight);
                 composer.setSize(window.innerWidth, window.innerHeight);
             });
+// --- 粘贴在这下面 ---
+            window.addEventListener('click', () => {
+                const bgm = document.getElementById('bgm');
+                if (bgm && bgm.paused) {
+                    bgm.play().catch(e => console.log("音频播放受阻:", e));
+                }
+            }, { once: true }); // 只要用户点第一次，音乐就会启动
+            // --- 粘贴在这上面 ---
             document.getElementById('file-input').addEventListener('change', handleImageUpload);
             
             // Toggle UI logic - ONLY hide controls, keep title
@@ -653,4 +661,5 @@
 </html>
 
     
+
 
